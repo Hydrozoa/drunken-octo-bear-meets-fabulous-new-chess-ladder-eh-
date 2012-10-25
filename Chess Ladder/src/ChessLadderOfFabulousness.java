@@ -173,6 +173,11 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 		loserField.setFont(regularFont);
 		loserField.setBounds(400, 250, 300, 50);
 		gamePanel.add(loserField);
+		//null
+		for(int i = 0; i < nameArray.length; i++)
+		{
+			nameArray[i] = "";
+		}
 	}
 	
 	public void releaseTheKraken()
@@ -197,12 +202,12 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 			
 			for(int i=0; i < nameArray.length ; i++)
 			{
-				if(nameArray[i] != null)
+				if(nameArray[i].isEmpty() == false)
 				{	
 				String tempText = ladder.getText();
 				ladder.setText(tempText+ "\n" + (i+1) + "." + nameArray[i]);
 				}
-			}
+			}//null
 			
 			repaint();
 		}
@@ -227,24 +232,22 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 		}
 		else if(e.getSource() == submitButton)
 		{
-			String tempName = nameField.getText();		
-			newPanel.setVisible(false);
-			ladderPanel.setVisible(true);			
+			String tempName = nameField.getText();				
 			int firstBlank = 0;		
 			for(int i = 0; i < nameArray.length; i++)
 			{
-				if(nameArray[i] == null)
+				if(nameArray[i].isEmpty() == true)//null
 				{
 					firstBlank = i;	
 					i = nameArray.length;
 				}
 			}		
 			nameArray[firstBlank] = tempName;
-			
+			ladder.setText("");
 			
 			for(int i=0; i < 31 ; i++)
 			{
-				if(nameArray[i] != null)
+				if(nameArray[i].isEmpty() == false)//null
 				{	
 				String tempText = ladder.getText();
 				ladder.setText("");
@@ -253,6 +256,11 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 				tempText="";
 				}
 			}
+			
+			newPanel.setVisible(false);
+			ladderPanel.setVisible(true);	
+			
+			tempName = "";
 			
 		}
 		else if(e.getSource() == viewButton)
@@ -267,7 +275,7 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 					 i=100;
 				}
 			}
-			nameArray[addressOfTheDeceased] = null;
+			nameArray[addressOfTheDeceased] = "";
 			
 			for(int i = addressOfTheDeceased; i <= 31; i--)
 			{
@@ -278,7 +286,7 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 				}
 				else if(i == 0)
 				{
-					nameArray[i] = null;
+					nameArray[i] = "";//null
 					i = 300;
 				}
 			}
@@ -290,13 +298,13 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 			
 			for(int i=0; i < 100 ; i++)
 			{	
-				if(nameArray[i] != null)
+				if(nameArray[i].isEmpty() == false)
 				{	
 					System.out.println("Shouldn't appear");
 				String tempText = ladder.getText();
 				ladder.setText(tempText+ "\n" + (i+1) + "." + nameArray[i]);
 				}
-				else if(nameArray[i] == null)
+				else if(nameArray[i].isEmpty() == true)
 				{
 					i = 300;
 					ladder.setText("");
@@ -334,13 +342,13 @@ public class ChessLadderOfFabulousness extends JFrame implements ActionListener{
 			
 			for(int i=0; i < 100 ; i++)
 			{	
-				if(nameArray[i] != null)
+				if(nameArray[i].isEmpty() == false)
 				{	
 					System.out.println("Shouldn't appear");
 				String tempText = ladder.getText();
 				ladder.setText(tempText+ "\n" + (i+1) + "." + nameArray[i]);
 				}
-				else if(nameArray[i] == null)
+				else if(nameArray[i].isEmpty() == true)
 				{
 					i = 300;
 					ladder.setText("");
